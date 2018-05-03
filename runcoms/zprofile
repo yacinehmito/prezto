@@ -9,6 +9,11 @@
 # Browser
 #
 
+echo -ne "\e]1;${PWD##*/}\a"
+precmd() {
+  echo -ne "\e]1;${PWD##*/}\a"
+}
+
 if [[ "$OSTYPE" == darwin* ]]; then
   export BROWSER='open'
 fi
@@ -17,8 +22,8 @@ fi
 # Editors
 #
 
-export EDITOR='nano'
-export VISUAL='nano'
+export EDITOR='nvim'
+export VISUAL='nvim'
 export PAGER='less'
 
 #
@@ -43,7 +48,6 @@ typeset -gU cdpath fpath mailpath path
 
 # Set the list of directories that Zsh searches for programs.
 path=(
-  /usr/local/{bin,sbin}
   $path
 )
 
